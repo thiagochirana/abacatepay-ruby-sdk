@@ -5,8 +5,8 @@ require_relative "lib/abacatepay/version"
 Gem::Specification.new do |spec|
   spec.name = "abacatepay-ruby"
   spec.version = AbacatePay::VERSION
-  spec.authors = ["Matheus Cardoso"]
-  spec.email = ["mathuscardoso@gmail.com"]
+  spec.authors = ["Matheus Cardoso", "Thiago Chirana"]
+  spec.email = ["mathuscardoso@gmail.com", "engsw.thiago@gmail.com"]
 
   spec.summary = "AbacatePay Ruby on Rails SDK for you to start receiving payments in seconds"
   spec.description = "The easiest way to integrate your Ruby on Rails SDK base code to AbacatePay Gateway with support to coroutines."

@@ -29,6 +29,9 @@ module AbacatePay
       @api_token = nil
     end
 
+    # The name said what is
+    VALID_ENVIRONMENTS = %i[production sandbox].freeze
+
     # Validates the configuration
     #
     # @raise [ConfigurationError] if any required settings are missing or invalid
@@ -37,7 +40,7 @@ module AbacatePay
     # @api public
     def validate!
       raise ConfigurationError, "API token is required" if api_token.nil?
-      raise ConfigurationError, "Invalid environment" unless %i[production sandbox].include?(environment)
+      raise ConfigurationError, "Invalid environment. Acceptable values: #{VALID_ENVIRONMENTS.join(', ')}" unless VALID_ENVIRONMENTS.include?(environment)
     end
 
     # Gets the base API URL based on the environment
@@ -46,9 +49,10 @@ module AbacatePay
     #
     # @api public
     def api_url
-      if environment == :production
+      case environment
+      when :production
         "https://api.abacatepay.com/v1"
-      else
+      when :sandbox, :development
         "https://sandbox.api.abacatepay.com/v1"
       end
     end
